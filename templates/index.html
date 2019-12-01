@@ -1,0 +1,420 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Start Slider Area -->
+<div id="home" class="slider-area">
+  <div class="bend niceties preview-2">
+    <div id="ensign-nivoslider" class="slides">
+
+      {% for pic in events %}
+      {% comment %} <img src="{{  pic.data.images.standard_resolution.url }}"  height="50" alt="" title="#slider-direction{{ pic.data.id }}" /> {% endcomment %}
+      <img src="{{  pic.image.url }}"  height="50" alt="" title="#slider-direction{{ pic.id }}" />
+
+      {% endfor %}
+
+    </div>
+
+    <!-- direction 1 -->
+    {% for item in events %}
+    {% comment %} <div id="slider-direction{{ item.data.id }}" class="slider-direction slider-one"> {% endcomment %}
+    <div id="slider-direction{{ item.id }}" class="slider-direction slider-one">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="slider-content">
+              <!-- layer 1 -->
+              <div class="layer-1-1 hidden-xs wow slideInDown" data-wow-duration="2s" data-wow-delay=".2s">
+                {% comment %} <h2 class="title1">{{ item.commnt.data.0.text }}</h2> {% endcomment %}
+                <h2 class="title1">{{ item.title }}</h2>
+              </div>
+              <!-- layer 2 -->
+              <div class="layer-1-2 wow slideInUp" data-wow-duration="2s" data-wow-delay=".1s">
+                {% comment %} <h1 class="title2">{{ item.commnt.data.0.text }}</h1> {% endcomment %}
+                <h1 class="title2">{{ item.short_discription }}</h1>
+              </div>
+              <!-- layer 3 -->
+              <div class="col-md-12 layer-1-3 hidden-xs wow slideInUp" data-wow-duration="2s" data-wow-delay=".2s">
+                <a class="ready-btn right-btn page-scroll" href="https://bahamta.com/c/30456-79249991">کمک کردن</a>
+                <a class="ready-btn page-scroll" href="">اطلاعات بیشتر</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- End Slider Area -->
+
+<!-- Start About area -->
+<div id="about" class="about-area area-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="section-headline text-center ">
+          <h2 style="font-family: BTitrbold">انجمن خیرین جوان اصفهان</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- single-well start-->
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="well-left">
+          <div class="single-well">
+            <a href="#">
+              <img src="{% static 'img/about/1.jpg' %}" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- single-well end-->
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="well-middle">
+          <div class="single-well" align="right" dir="rtl">
+            <a href="#">
+              <h3 class="sec-head">معرفی انجمن...</h3>
+            </a>
+            <p style="font-size: large">
+              {{ siteinfo.about.disc }}
+            </p>
+            <ul style="font-size: x-large">
+              {% for about_item in siteinfo.about.items %}
+              <li>
+                <i class="fa fa-check"></i>
+                {{ about_item }}
+                </li>
+              <li>
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End col-->
+    </div>
+  </div>
+</div>
+<!-- End About area -->
+
+<!-- Start Service area -->
+<div id="services" class="services-area area-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="section-headline services-head text-center">
+          <h2 dir="rtl">خدمات ما...</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="services-contents">
+        {% for item in siteinfo.services %}
+        <!-- Start Left services -->
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="about-move">
+            <div class="services-details">
+              <div class="single-services">
+                <a class="services-icon" href="#">
+                  <i class="fa fa-code"></i>
+                </a>
+                <h4>{{ item.service_title }} </h4>
+                <p>
+                  {{ item.service_disc }}
+
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end about-details -->
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Service area -->
+
+<!-- our-skill-area start -->
+<div class="our-skill-area fix hidden-sm">
+  <div class="test-overly"></div>
+  <div class="skill-bg area-padding-2">
+    <div class="container">
+      <!-- section-heading end -->
+      <div class="row">
+        <div class="skill-text">
+          <!-- single-skill start -->
+          <div class="col-xs-12 col-sm-3 col-md-3 text-center">
+            <div class="single-skill">
+              <div class="progress-circular">
+                <input type="text" class="knob" value="0" data-rel="94" data-linecap="round" data-width="175"
+                  data-bgcolor="#fff" data-fgcolor="#3EC1D5" data-thickness=".20" data-readonly="true" disabled>
+                <h3 class="progress-h4">Web Design</h3>
+              </div>
+            </div>
+          </div>
+          <!-- single-skill end -->
+          <!-- single-skill start -->
+          <div class="col-xs-12 col-sm-3 col-md-3 text-center">
+            <div class="single-skill">
+              <div class="progress-circular">
+                <input type="text" class="knob" value="0" data-rel="85" data-linecap="round" data-width="175"
+                  data-bgcolor="#fff" data-fgcolor="#3EC1D5" data-thickness=".20" data-readonly="true" disabled>
+                <h3 class="progress-h4">Graphics Design</h3>
+              </div>
+            </div>
+          </div>
+          <!-- single-skill end -->
+          <!-- single-skill start -->
+          <div class="col-xs-12 col-sm-3 col-md-3 text-center">
+            <div class="single-skill">
+              <div class="progress-circular">
+                <input type="text" class="knob" value="0" data-rel="75" data-linecap="round" data-width="175"
+                  data-bgcolor="#fff" data-fgcolor="#3EC1D5" data-thickness=".20" data-readonly="true" disabled>
+                <h3 class="progress-h4">Php Developer</h3>
+              </div>
+            </div>
+          </div>
+          <!-- single-skill end -->
+          <!-- single-skill start -->
+          <div class="col-xs-12 col-sm-3 col-md-3 text-center">
+            <div class="single-skill">
+              <div class="progress-circular">
+                <input type="text" class="knob" value="0" data-rel="65" data-linecap="round" data-width="175"
+                  data-bgcolor="#fff" data-fgcolor="#3EC1D5" data-thickness=".20" data-readonly="true" disabled>
+                <h3 class="progress-h4">Java Script</h3>
+              </div>
+            </div>
+          </div>
+          <!-- single-skill end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- our-skill-area end -->
+
+<!--==========================
+      Clients Section
+    ============================-->
+<section id="clients" class="wow fadeInUp">
+  <div class="container">
+
+    <header class="section-header">
+      <div class="section-headline text-center">
+        <h2 dir="rtl">همکاران ما...</h2>
+      </div>
+    </header>
+
+    <div class="owl-carousel clients-carousel">
+      {% for sponsor in siteinfo.sponsors %}
+      <img src="{{ sponsor }} " alt="">
+      {% endfor %}
+    </div>
+
+  </div>
+</section><!-- #clients -->
+
+
+<!-- Start Wellcome Area -->
+<div id="social" class="wellcome-area">
+  <div class="well-bg">
+    <div class="test-overly"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="wellcome-text">
+            <div class="well-text text-center">
+              <h2>عضویت در کانالهای مجازی انجمن</h2>
+              <p>
+                با وارد کردن شماره همراه خود در تمامی کانالها و گروه های مجازی خیریه عضو شوید و از فعالیتهای ما با خبر
+                شوید.
+              </p>
+              <div class="subs-feilds">
+                <div class="suscribe-input">
+                  <input class="email form-control width-80" id="sus_email" placeholder="شماره همراه">
+                  <button type="submit" id="sus_submit" class="add-btn width-20">عضویت</button>
+                  <div id="msg_Submit" class="h3 text-center hidden"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Wellcome Area -->
+
+<!-- Start team Area -->
+<div id="team" class="our-team-area area-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="section-headline text-center">
+          <h2>اعضای اصلی انجمن </h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="team-top">
+        {% for member in siteinfo.members  %}
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="single-team-member">
+            <div class="team-img">
+              <a href="#">
+                <img src="{{ member.img }}" alt="">
+              </a>
+              <div class="team-social-icon text-center">
+                <ul>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="team-content text-center">
+              <h4> {{ member.name }}</h4>
+              <p>{{ member.disc }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <!-- End column -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Team Area -->
+<!-- Start Testimonials -->
+<div class="testimonials-area">
+  <div class="testi-inner area-padding">
+    <div class="testi-overly"></div>
+    <div class="container ">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <!-- Start testimonials Start -->
+          <div class="testimonial-content text-center">
+            <a class="quate" href="#"><i class="fa fa-quote-right"></i></a>
+            <!-- start testimonial carousel -->
+            <div class="testimonial-carousel">
+              {% for  slogan in siteinfo.slogans %}
+              <div class="single-testi">
+                <div class="testi-text">
+                  <p>
+                    {{ slogan.this_slogan }}
+                  </p>
+                  <h6>{{ slogan.name }}</h6>
+                </div>
+              </div>
+              {% endfor %}
+              <!-- End single item -->
+
+            </div>
+          </div>
+          <!-- End testimonials end -->
+        </div>
+        <!-- End Right Feature -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Testimonials -->
+<!-- Start Blog Area -->
+<div id="blog" class="blog-area">
+  <div class="blog-inner area-padding">
+    <div class="blog-overly"></div>
+    <div class="container ">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline text-center">
+            <h2>آخرین اخبار </h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {% for item in insta %}
+        <!-- Start Left Blog -->
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="single-blog">
+            <div class="single-blog-img">
+              <a href="blog.html">
+                <img src="{{ item.data.images.standard_resolution.url }}" alt="">
+              </a>
+            </div>
+            <div class="blog-meta">
+              <span class="comments-type">
+                <i class="fa fa-comment-o"></i>
+                <a href="#">{{ item.data.likes.count }} likes</a>
+              </span>
+              <span class="date-type">
+                <i class="fa fa-calendar"></i>
+                {{ item.data.created_time }}
+              </span>
+            </div>
+            <div class="blog-text">
+              <p display="inline">
+                {{ item.data.caption.text }}
+              </p>
+            </div>
+            <span>
+              <a href="{{ item.data.link }}" class="ready-btn">بیشتر بخوانید</a>
+            </span>
+          </div>
+          <!-- Start single blog -->
+        </div>
+        <!-- End Left Blog-->
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<!-- End Blog -->
+<!-- Start Suscrive Area -->
+<div class="suscribe-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+        <div class="suscribe-text text-center">
+          <a class="sus-btn" href="#">پیغام بگذارید</a>
+          <h3 align="right"> می توانید با ما بیشتر در تماس باشید</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Suscrive Area -->
+
+
+{% endblock content %}
+
+{% block instaarea %}
+<div class="col-md-4 col-sm-4 col-xs-12">
+  <div class="footer-content">
+    <div class="footer-head">
+      <h4>Instagram</h4>
+      <div class="flicker-img">
+        {% for pic  in insta %}
+        <a href="#"><img src="{{  pic.data.images.thumbnail.url }}" alt=""></a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock instaarea %}
