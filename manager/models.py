@@ -151,17 +151,9 @@ class Expense(Transaction):
     class Meta:
         verbose_name_plural = 'هزینه و خرج'
 
-    def delete_model(modeladmin, request, queryset, self):
-        self.paid_for.Update_Category()
-        for obj in queryset:
-            filename = obj.profile_name + ".xml"
-            os.remove(os.path.join(obj.type, filename))
-            obj.delete()
-
     def save(self, *args, **kwargs):
         if not self.id:
             self.date = timezone.now()
-        self.modified = timezone.now()
         super(Expense, self).save(*args, **kwargs)
         self.paid_for.Update_Category()
 
@@ -192,12 +184,6 @@ class Income(Transaction):
 
     def __str__(self):        
         return self.title
-
-    def delete_model(modeladmin, request, queryset, self):
-        for obj in queryset:
-            filename = obj.profile_name + ".xml"
-            os.remove(os.path.join(obj.type, filename))
-            self.paid_for.Update_Category()
 
     def save(self, *args, **kwargs):
         super(Income, self).save(*args, **kwargs)
