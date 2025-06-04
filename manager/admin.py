@@ -9,15 +9,25 @@ from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, T
 
 
 class IncomAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    actions = ['delete_modelll']
     list_filter = (
             ('date', JDateFieldListFilter),
         )
     list_display = ['title', 'tag_balance', 'tag_date']
 
+    def delete_queryset(self, request, queryset):
+        categories = set(obj.paid_for for obj in queryset if obj.paid_for)
+        super().delete_queryset(request, queryset)
+        for cat in categories:
+            cat.Update_Category()
+
+    def delete_model(self, request, obj):
+        category = obj.paid_for
+        super().delete_model(request, obj)
+        if category:
+            category.Update_Category()
+
 
 class ExpenseAdmin(admin.ModelAdmin):
-    actions = ['delete_model']
     list_filter = (
             ('date', JDateFieldListFilter),
         )
@@ -31,6 +41,18 @@ class ExpenseAdmin(admin.ModelAdmin):
             'fields': ('discription','madadjoo'),
         }),
     )
+
+    def delete_queryset(self, request, queryset):
+        categories = set(obj.paid_for for obj in queryset if obj.paid_for)
+        super().delete_queryset(request, queryset)
+        for cat in categories:
+            cat.Update_Category()
+
+    def delete_model(self, request, obj):
+        category = obj.paid_for
+        super().delete_model(request, obj)
+        if category:
+            category.Update_Category()
 
 
 class CategoryAdmin(admin.ModelAdmin):
